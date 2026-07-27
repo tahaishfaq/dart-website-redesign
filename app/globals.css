@@ -133,27 +133,71 @@
   html {
     @apply font-sans;
   }
+  a,
+  button,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  label[for],
+  select,
+  summary {
+    @apply cursor-pointer;
+  }
+  :disabled,
+  [aria-disabled="true"] {
+    @apply cursor-not-allowed;
+  }
 }
 
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
+/* Lenis smooth scroll (Flexfolio-style inertia) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass-fallback {
+    background: rgb(255 255 255 / 0.96) !important;
+    backdrop-filter: none !important;
   }
-  to {
+}
+
+/* CTA sheen - loops with a pause, then resets on-button */
+@keyframes cta-sheen {
+  0% {
+    transform: translateX(-140%) skewX(-18deg);
+    opacity: 0;
+  }
+  8% {
     opacity: 1;
-    transform: translateY(0);
+  }
+  42% {
+    transform: translateX(320%) skewX(-18deg);
+    opacity: 1;
+  }
+  48%,
+  100% {
+    transform: translateX(320%) skewX(-18deg);
+    opacity: 0;
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .animate-fade-up {
-    animation: fade-up 0.7s ease-out both;
-  }
-  .animate-fade-up-delay {
-    animation: fade-up 0.7s ease-out 0.12s both;
-  }
-  .animate-fade-up-delay-2 {
-    animation: fade-up 0.75s ease-out 0.22s both;
+  .cta-sheen {
+    animation: cta-sheen 4.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    will-change: transform;
   }
 }

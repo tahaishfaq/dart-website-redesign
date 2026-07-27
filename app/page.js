@@ -1,6 +1,7 @@
-import { SiteHeader } from "@/components/landing/site-header";
 import { Hero } from "@/components/landing/hero";
-import { FeatureGrid } from "@/components/landing/feature-grid";
+import { TrustStrip } from "@/components/landing/trust-strip";
+import { AboutDart } from "@/components/landing/about-dart";
+import { AtAGlance } from "@/components/landing/at-a-glance";
 import { FeatureOrders } from "@/components/landing/feature-orders";
 import { FeatureMenu } from "@/components/landing/feature-menu";
 import { FeatureInventory } from "@/components/landing/feature-inventory";
@@ -12,24 +13,50 @@ import { PlatformModules } from "@/components/landing/platform-modules";
 import { WhyDart } from "@/components/landing/why-dart";
 import { FinalCta } from "@/components/landing/final-cta";
 import { SiteFooter } from "@/components/landing/site-footer";
+import { Reveal } from "@/components/landing/reveal";
 
 export default function Home() {
   return (
     <>
-      <SiteHeader />
       <main>
         <Hero />
-        <FeatureGrid />
-        <FeatureOrders />
-        <FeatureMenu />
-        <FeatureInventory />
-        <Analytics />
-        <FeatureReviews />
-        <FeaturePayments />
-        <RestaurantTypes />
-        <PlatformModules />
-        <WhyDart />
-        <FinalCta />
+        <TrustStrip />
+        <Reveal>
+          <AboutDart />
+        </Reveal>
+        <Reveal delay={0.04}>
+          <AtAGlance />
+        </Reveal>
+        <Reveal delay={0.04}>
+          <FeatureOrders />
+        </Reveal>
+        <Reveal delay={0.04}>
+          <FeatureMenu />
+        </Reveal>
+        <Reveal delay={0.04}>
+          <FeatureInventory />
+        </Reveal>
+        <Reveal delay={0.04}>
+          <Analytics />
+        </Reveal>
+        <Reveal delay={0.04}>
+          <FeatureReviews />
+        </Reveal>
+        <Reveal delay={0.04}>
+          <FeaturePayments />
+        </Reveal>
+        <Reveal delay={0.04}>
+          <RestaurantTypes />
+        </Reveal>
+        <Reveal delay={0.04}>
+          <PlatformModules />
+        </Reveal>
+        <Reveal delay={0.04}>
+          <WhyDart />
+        </Reveal>
+        <Reveal delay={0.04}>
+          <FinalCta />
+        </Reveal>
       </main>
       <SiteFooter />
     </>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 96" fill="none">
+  <defs>
+    <filter id="warp" x="-12%" y="-30%" width="124%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="3" seed="11" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <!-- Soft coral / salmon peach - matches the generated brush mark tone -->
+  <g filter="url(#warp)">
+    <path fill="#ff9a6b" fill-opacity="0.72" d="M22 24c36-5 84-8 136-7 48 1 92 5 140 4 28-1 52-4 70-3v12c-26 2-54 5-90 6-52 2-104-1-156-2-34-1-66 1-94 3-6 0-12 1-16 1V28c6-2 14-3 22-4z"/>
+    <path fill="#ff8a52" fill-opacity="0.82" d="M12 34c42-6 98-9 158-8 56 1 108 5 162 4 28-.5 54-3 74-2l-2 16c-28 2-58 5-96 6-58 2-116-1-174-2-38-.5-72 1-102 4l-8-1 2-15c8-2 18-3 28-4z"/>
+    <path fill="#ff9458" fill-opacity="0.78" d="M28 46c40-5 94-7 150-6 52 1 100 4 148 3 26-.5 48-3 66-2l-1 15c-26 2-54 4-90 5-54 1-108-1-162-2-36-.5-68 1-96 3l-6-1 1-14c10-2 20-3 30-3z"/>
+    <path fill="#ffb08a" fill-opacity="0.65" d="M36 18c32-4 78-6 126-5 44 1 84 3 126 2 22-.4 40-2 54-1l-1 11c-20 2-44 3-74 4-46 1-92-1-138-2-30-.4-56 1-78 2l-6-1 1-10c8-1 16-2 26-2z"/>
+    <path fill="#ff8f5c" fill-opacity="0.7" d="M16 58c38-4 90-6 144-5 50 1 96 3 142 2 24-.4 46-2 62-1l-1 14c-24 2-50 4-84 5-52 1-104-1-156-2-34-.4-64 1-90 3l-7-1 1-13c10-2 20-3 30-3z"/>
+  </g>
+</svg>

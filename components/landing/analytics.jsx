@@ -1,4 +1,11 @@
-import { Star, Timer, UserRound, X } from "lucide-react";
+import {
+  Cancel01Icon,
+  StarIcon,
+  Timer01Icon,
+  UserIcon,
+} from "@hugeicons/core-free-icons";
+import { Icon } from "@/components/ui/icon";
+import { SectionAtmosphere } from "@/components/landing/section-atmosphere";
 
 function Spark({ color = "#F97316", up = true }) {
   const d = up
@@ -32,7 +39,7 @@ const metrics = [
     metaClass: "text-muted-foreground",
     body: (
       <div className="mt-3 flex items-center gap-2 text-primary">
-        <UserRound className="size-4" />
+        <Icon icon={UserIcon} size={16} />
         <span className="text-[11px] font-medium text-muted-foreground">
           Peak lunch service
         </span>
@@ -46,7 +53,7 @@ const metrics = [
     metaClass: "text-muted-foreground",
     body: (
       <div className="mt-3 flex items-center gap-2 text-primary">
-        <Timer className="size-4" />
+        <Icon icon={Timer01Icon} size={16} />
         <span className="text-[11px] font-medium text-muted-foreground">
           On track
         </span>
@@ -60,7 +67,7 @@ const metrics = [
     metaClass: "text-emerald-600",
     body: (
       <div className="mt-3 flex items-center gap-2 text-rose-500">
-        <X className="size-4" />
+        <Icon icon={Cancel01Icon} size={16} />
         <span className="text-[11px] font-medium text-muted-foreground">
           Clean service day
         </span>
@@ -75,9 +82,9 @@ const metrics = [
     body: (
       <div className="mt-3 flex items-center gap-1 text-amber-400">
         {Array.from({ length: 4 }).map((_, i) => (
-          <Star key={i} className="size-3.5 fill-current" />
+          <Icon key={i} icon={StarIcon} size={14} />
         ))}
-        <Star className="size-3.5" />
+        <Icon icon={StarIcon} size={14} className="opacity-40" />
       </div>
     ),
   },
@@ -85,8 +92,9 @@ const metrics = [
 
 export function Analytics() {
   return (
-    <section className="bg-white py-16 sm:py-20">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden bg-white py-16 sm:py-20">
+      <SectionAtmosphere variant="dual" />
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-extrabold tracking-tight text-brand-ink sm:text-4xl">
             Understand what drives your revenue.{" "}

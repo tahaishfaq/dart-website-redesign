@@ -1,5 +1,7 @@
-import { Check } from "lucide-react";
+import { Tick02Icon } from "@hugeicons/core-free-icons";
+import { Icon } from "@/components/ui/icon";
 import { Badge } from "@/components/ui/badge";
+import { SectionAtmosphere } from "@/components/landing/section-atmosphere";
 
 const rows = [
   { item: "Chicken Breast", stock: "2.5 kg", status: "Low Stock", tone: "amber" },
@@ -23,8 +25,9 @@ const bullets = [
 
 export function FeatureInventory() {
   return (
-    <section className="bg-brand-cream/50 py-16 sm:py-20">
-      <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8">
+    <section className="relative overflow-hidden bg-white py-16 sm:py-20">
+      <SectionAtmosphere variant="forest-left" />
+      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8">
         <div className="overflow-hidden rounded-2xl border border-black/6 bg-white shadow-[0_24px_48px_-28px_rgba(15,23,42,0.35)]">
           <div className="flex items-center justify-between border-b border-black/6 px-4 py-3">
             <h3 className="text-sm font-bold text-brand-ink">Inventory</h3>
@@ -84,7 +87,7 @@ export function FeatureInventory() {
                 className="flex items-start gap-2.5 text-[14px] text-brand-ink/85"
               >
                 <span className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-brand-forest/15 text-brand-forest">
-                  <Check className="size-3" strokeWidth={3} />
+                  <Icon icon={Tick02Icon} size={12} strokeWidth={2.5} />
                 </span>
                 {item}
               </li>

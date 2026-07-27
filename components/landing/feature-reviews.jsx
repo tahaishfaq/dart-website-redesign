@@ -1,5 +1,7 @@
-import { Check, Star } from "lucide-react";
+import { StarIcon, Tick02Icon } from "@hugeicons/core-free-icons";
+import { Icon } from "@/components/ui/icon";
 import { Badge } from "@/components/ui/badge";
+import { SectionAtmosphere } from "@/components/landing/section-atmosphere";
 
 const reviews = [
   {
@@ -28,13 +30,14 @@ const bullets = [
 
 export function FeatureReviews() {
   return (
-    <section className="bg-brand-cream/50 py-16 sm:py-20">
-      <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8">
+    <section className="relative overflow-hidden bg-white py-16 sm:py-20">
+      <SectionAtmosphere variant="peach-br" />
+      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8">
         <div className="overflow-hidden rounded-2xl border border-black/6 bg-white shadow-[0_24px_48px_-28px_rgba(15,23,42,0.35)]">
           <div className="flex items-center justify-between border-b border-black/6 px-4 py-3">
             <h3 className="text-sm font-bold text-brand-ink">Reviews</h3>
             <span className="inline-flex items-center gap-1 text-[12px] font-semibold text-brand-ink">
-              4.8 <Star className="size-3.5 fill-amber-400 text-amber-400" />
+              4.8 <Icon icon={StarIcon} size={14} className="text-amber-400" />
             </span>
           </div>
           <ul className="divide-y divide-black/5">
@@ -46,7 +49,7 @@ export function FeatureReviews() {
                   </p>
                   <div className="flex items-center gap-0.5 text-amber-400">
                     {Array.from({ length: review.rating }).map((_, i) => (
-                      <Star key={i} className="size-3 fill-current" />
+                      <Icon key={i} icon={StarIcon} size={12} className="text-current" />
                     ))}
                   </div>
                 </div>
@@ -80,7 +83,7 @@ export function FeatureReviews() {
                 className="flex items-start gap-2.5 text-[14px] text-brand-ink/85"
               >
                 <span className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
-                  <Check className="size-3" strokeWidth={3} />
+                  <Icon icon={Tick02Icon} size={12} strokeWidth={2.5} />
                 </span>
                 {item}
               </li>

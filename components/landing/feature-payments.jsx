@@ -1,5 +1,7 @@
-import { Check } from "lucide-react";
+import { Tick02Icon } from "@hugeicons/core-free-icons";
+import { Icon } from "@/components/ui/icon";
 import { Badge } from "@/components/ui/badge";
+import { SectionAtmosphere } from "@/components/landing/section-atmosphere";
 
 const rows = [
   { label: "Today’s earnings", value: "₱23,090.00", tone: "text-brand-ink" },
@@ -17,8 +19,9 @@ const bullets = [
 
 export function FeaturePayments() {
   return (
-    <section className="bg-white py-16 sm:py-20">
-      <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8">
+    <section className="relative overflow-hidden bg-white py-16 sm:py-20">
+      <SectionAtmosphere variant="peach-bl" />
+      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8">
         <div className="order-2 lg:order-1">
           <Badge className="rounded-full bg-brand-forest/10 px-2.5 py-1 text-[10px] font-bold tracking-[0.12em] text-brand-forest uppercase hover:bg-brand-forest/10">
             Payments
@@ -40,7 +43,7 @@ export function FeaturePayments() {
                 className="flex items-start gap-2.5 text-[14px] text-brand-ink/85"
               >
                 <span className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-brand-forest/15 text-brand-forest">
-                  <Check className="size-3" strokeWidth={3} />
+                  <Icon icon={Tick02Icon} size={12} strokeWidth={2.5} />
                 </span>
                 {item}
               </li>
