@@ -1,79 +1,95 @@
-import { Tick02Icon } from "@hugeicons/core-free-icons";
+"use client";
+
+import {
+  Invoice01Icon,
+  Money01Icon,
+  Payment01Icon,
+  Wallet01Icon,
+} from "@hugeicons/core-free-icons";
+import { useReducedMotion } from "motion/react";
 import { Icon } from "@/components/ui/icon";
-import { Badge } from "@/components/ui/badge";
+import { Reveal } from "@/components/landing/reveal";
 import { SectionAtmosphere } from "@/components/landing/section-atmosphere";
+import {
+  ScrollRevealWords,
+  useCopyScrollProgress,
+} from "@/components/landing/scroll-reveal-words";
 
-const rows = [
-  { label: "Today’s earnings", value: "₱23,090.00", tone: "text-brand-ink" },
-  { label: "Transactions", value: "128", tone: "text-brand-ink" },
-  { label: "Pending payout", value: "₱8,450.00", tone: "text-amber-700" },
-  { label: "Last payout", value: "₱14,200.00", tone: "text-emerald-700" },
-];
+const HEADLINE = "Payments made simple";
+const LEAD = "Know exactly what you have earned.";
+const BODY =
+  "Track every peso from one place. Earnings, transactions, payouts, and payment history stay clear so you never guess where the money went.";
 
-const bullets = [
-  "View earnings in one place",
-  "Track transactions and payouts",
-  "Review full payment history",
-  "No manual calculations or uncertainty",
+const strip = [
+  { label: "Earnings", icon: Money01Icon },
+  { label: "Transactions", icon: Invoice01Icon },
+  { label: "Payouts", icon: Wallet01Icon },
+  { label: "Payment history", icon: Payment01Icon },
 ];
 
 export function FeaturePayments() {
+  const reduce = useReducedMotion();
+  const { ref: copyRef, scrollYProgress } = useCopyScrollProgress([
+    "start 0.88",
+    "end 0.5",
+  ]);
+
   return (
-    <section className="relative overflow-hidden bg-white py-16 sm:py-20">
+    <section
+      id="payments"
+      className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-28"
+    >
       <SectionAtmosphere variant="peach-bl" />
-      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8">
-        <div className="order-2 lg:order-1">
-          <Badge className="rounded-full bg-brand-forest/10 px-2.5 py-1 text-[10px] font-bold tracking-[0.12em] text-brand-forest uppercase hover:bg-brand-forest/10">
-            Payments
-          </Badge>
-          <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-brand-ink sm:text-4xl">
-            Payments made simple
-          </h2>
-          <p className="mt-2 text-[16px] font-semibold text-brand-ink/80">
-            Know exactly what you’ve earned.
+
+      <div
+        ref={copyRef}
+        className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8"
+      >
+        <div className="max-w-2xl">
+          <ScrollRevealWords
+            as="h2"
+            text={HEADLINE}
+            progress={scrollYProgress}
+            range={[0, 0.4]}
+            ghostOpacity={0.16}
+            className="text-[2rem] font-medium leading-[1.18] tracking-[-0.035em] text-brand-ink sm:text-4xl sm:leading-[1.14] sm:tracking-[-0.045em] lg:text-[2.75rem]"
+          />
+          <p className="mt-3 text-[16px] font-semibold tracking-tight text-brand-ink/80">
+            {LEAD}
           </p>
-          <p className="mt-3 max-w-md text-[15px] leading-relaxed text-muted-foreground">
-            Track every peso from one place. View earnings, transactions,
-            payouts, and payment history with complete financial visibility.
-          </p>
-          <ul className="mt-6 space-y-3">
-            {bullets.map((item) => (
-              <li
-                key={item}
-                className="flex items-start gap-2.5 text-[14px] text-brand-ink/85"
-              >
-                <span className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-brand-forest/15 text-brand-forest">
-                  <Icon icon={Tick02Icon} size={12} strokeWidth={2.5} />
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
+          <ScrollRevealWords
+            as="p"
+            text={BODY}
+            progress={scrollYProgress}
+            range={[0.28, 0.8]}
+            ghostOpacity={0.18}
+            className="mt-4 max-w-[48ch] text-[15px] leading-relaxed text-brand-ink/70 sm:text-base"
+          />
         </div>
 
-        <div className="order-1 overflow-hidden rounded-2xl border border-black/6 bg-white shadow-[0_24px_48px_-28px_rgba(15,23,42,0.35)] lg:order-2">
-          <div className="border-b border-black/6 px-4 py-3">
-            <h3 className="text-sm font-bold text-brand-ink">Earnings</h3>
-            <p className="mt-0.5 text-[11px] text-muted-foreground">
-              No manual calculations. No uncertainty.
-            </p>
-          </div>
-          <ul className="divide-y divide-black/5">
-            {rows.map((row) => (
-              <li
-                key={row.label}
-                className="flex items-center justify-between gap-3 px-4 py-3.5"
-              >
-                <span className="text-[13px] text-muted-foreground">
-                  {row.label}
-                </span>
-                <span className={`text-[14px] font-bold ${row.tone}`}>
-                  {row.value}
-                </span>
-              </li>
+        <Reveal delay={0.08} y={28}>
+          <div className="mt-12 grid gap-px overflow-hidden rounded-[1.5rem] bg-brand-ink/[0.08] ring-1 ring-brand-ink/[0.06] sm:grid-cols-2 lg:grid-cols-4">
+            {strip.map(({ label, icon }, i) => (
+              <Reveal key={label} delay={reduce ? 0 : 0.1 + i * 0.06} y={18}>
+                <div className="flex flex-col gap-3 bg-white px-5 py-6 sm:px-6">
+                  <span className="inline-flex size-9 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <Icon icon={icon} size={18} strokeWidth={1.75} />
+                  </span>
+                  <span className="text-[15px] font-semibold tracking-tight text-brand-ink">
+                    {label}
+                  </span>
+                </div>
+              </Reveal>
             ))}
-          </ul>
-        </div>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.2}>
+          <p className="mt-8 max-w-lg text-[15px] font-medium leading-relaxed text-brand-ink/80">
+            No manual calculations. No uncertainty. Just complete financial
+            visibility.
+          </p>
+        </Reveal>
       </div>
     </section>
   );

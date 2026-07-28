@@ -1,121 +1,132 @@
-import { Tick02Icon } from "@hugeicons/core-free-icons";
+"use client";
+
+import {
+  CookingPotIcon,
+  FileImportIcon,
+  FlashIcon,
+  PencilEdit01Icon,
+} from "@hugeicons/core-free-icons";
+import { motion, useReducedMotion } from "motion/react";
 import { Icon } from "@/components/ui/icon";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/landing/reveal";
 import { SectionAtmosphere } from "@/components/landing/section-atmosphere";
+import {
+  ScrollRevealWords,
+  useCopyScrollProgress,
+} from "@/components/landing/scroll-reveal-words";
 
-const items = [
-  {
-    name: "Truffle Pasta",
-    price: "₱420",
-    status: "Available",
-    tone: "emerald",
-    color: "bg-orange-100",
-  },
-  {
-    name: "Crispy Chicken Bowl",
-    price: "₱280",
-    status: "Available",
-    tone: "emerald",
-    color: "bg-amber-100",
-  },
-  {
-    name: "Matcha Latte",
-    price: "₱160",
-    status: "Unavailable",
-    tone: "rose",
-    color: "bg-emerald-100",
-  },
-  {
-    name: "Garlic Butter Shrimp",
-    price: "₱390",
-    status: "Available",
-    tone: "emerald",
-    color: "bg-rose-100",
-  },
-];
+const HEADLINE = "Your menu, always up to date";
+const LEAD = "Manage your menu in seconds.";
+const BODY =
+  "Update your restaurant without calling a developer. Add new dishes, edit prices, pause unavailable items, or import your entire menu in minutes. With live menu availability, customers only see what is ready to order.";
 
-const statusClass = {
-  emerald: "bg-emerald-50 text-emerald-700 ring-emerald-200",
-  rose: "bg-rose-50 text-rose-700 ring-rose-200",
-};
-
-const bullets = [
-  "Menu management",
-  "CSV menu import",
-  "Live item availability",
-  "One-click item updates",
+const tiles = [
+  {
+    title: "Menu management",
+    body: "Add dishes, edit prices, and organise categories in one place.",
+    icon: CookingPotIcon,
+    tone: "bg-[#fff4ee] ring-brand-ink/8",
+    span: "sm:col-span-1 sm:row-span-1",
+  },
+  {
+    title: "CSV menu import",
+    body: "Bring your full menu online in minutes, not days.",
+    icon: FileImportIcon,
+    tone: "bg-white ring-brand-ink/8",
+    span: "sm:col-span-1",
+  },
+  {
+    title: "Live availability",
+    body: "Pause sold-out items so guests never order what you cannot serve.",
+    icon: FlashIcon,
+    tone: "bg-[#003223] text-white ring-transparent",
+    span: "sm:col-span-1",
+    invert: true,
+  },
+  {
+    title: "One-click updates",
+    body: "Change an item once and it syncs everywhere customers order.",
+    icon: PencilEdit01Icon,
+    tone: "bg-[#ffe0cc] ring-brand-ink/8",
+    span: "sm:col-span-1",
+  },
 ];
 
 export function FeatureMenu() {
+  const reduce = useReducedMotion();
+  const { ref: copyRef, scrollYProgress } = useCopyScrollProgress([
+    "start 0.88",
+    "end 0.5",
+  ]);
+
   return (
-    <section className="relative overflow-hidden bg-white py-16 sm:py-20">
+    <section
+      id="menu"
+      className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-28"
+    >
       <SectionAtmosphere variant="peach-top" />
-      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8">
-        <div className="order-2 lg:order-1">
-          <Badge className="rounded-full bg-primary/10 px-2.5 py-1 text-[10px] font-bold tracking-[0.12em] text-primary uppercase hover:bg-primary/10">
-            Menu Management
-          </Badge>
-          <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-brand-ink sm:text-4xl">
-            Your menu, always up to date
-          </h2>
-          <p className="mt-2 text-[16px] font-semibold text-brand-ink/80">
-            Manage your menu in seconds.
+
+      <div
+        ref={copyRef}
+        className="relative mx-auto grid max-w-6xl items-start gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8"
+      >
+        <div className="max-w-xl lg:pt-4">
+          <ScrollRevealWords
+            as="h2"
+            text={HEADLINE}
+            progress={scrollYProgress}
+            range={[0, 0.4]}
+            ghostOpacity={0.16}
+            className="text-[2rem] font-medium leading-[1.18] tracking-[-0.035em] text-brand-ink sm:text-4xl sm:leading-[1.14] sm:tracking-[-0.045em] lg:text-[2.75rem]"
+          />
+          <p className="mt-3 text-[16px] font-semibold tracking-tight text-brand-ink/80">
+            {LEAD}
           </p>
-          <p className="mt-3 max-w-md text-[15px] leading-relaxed text-muted-foreground">
-            Update your restaurant without calling a developer. Add new dishes,
-            edit prices, pause unavailable items, or import your entire menu in
-            minutes. With live menu availability, customers only see what’s
-            ready to order.
-          </p>
-          <ul className="mt-6 space-y-3">
-            {bullets.map((item) => (
-              <li
-                key={item}
-                className="flex items-start gap-2.5 text-[14px] text-brand-ink/85"
-              >
-                <span className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
-                  <Icon icon={Tick02Icon} size={12} strokeWidth={2.5} />
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
+          <ScrollRevealWords
+            as="p"
+            text={BODY}
+            progress={scrollYProgress}
+            range={[0.28, 0.85]}
+            ghostOpacity={0.18}
+            className="mt-4 max-w-[46ch] text-[15px] leading-relaxed text-brand-ink/70 sm:text-base"
+          />
         </div>
 
-        <div className="order-1 overflow-hidden rounded-2xl border border-black/6 bg-white shadow-[0_24px_48px_-28px_rgba(15,23,42,0.35)] lg:order-2">
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-black/6 px-4 py-3">
-            <h3 className="text-sm font-bold text-brand-ink">Menu Items</h3>
-            <div className="flex items-center gap-2">
-              <div className="hidden h-8 w-36 items-center rounded-lg border border-black/8 bg-[#FAFAF8] px-2.5 text-[11px] text-muted-foreground sm:flex">
-                Search items…
-              </div>
-              <Button className="h-8 rounded-lg bg-primary px-3 text-[12px] font-semibold text-white hover:bg-primary/90">
-                Add Item
-              </Button>
-            </div>
-          </div>
-          <ul className="divide-y divide-black/5">
-            {items.map((item) => (
-              <li key={item.name} className="flex items-center gap-3 px-4 py-3">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {tiles.map(({ title, body, icon, tone, invert }, i) => (
+            <Reveal key={title} delay={reduce ? 0 : i * 0.07} y={24}>
+              <motion.article
+                whileHover={reduce ? undefined : { y: -2 }}
+                whileTap={reduce ? undefined : { scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 380, damping: 28 }}
+                className={`flex h-full flex-col rounded-[1.35rem] p-5 ring-1 ${tone}`}
+              >
                 <span
-                  className={`size-10 shrink-0 rounded-xl ${item.color}`}
-                  aria-hidden
-                />
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-[13px] font-semibold text-brand-ink">
-                    {item.name}
-                  </p>
-                  <p className="text-[12px] text-muted-foreground">{item.price}</p>
-                </div>
-                <span
-                  className={`inline-flex rounded-full px-2 py-0.5 text-[10.5px] font-semibold ring-1 ring-inset ${statusClass[item.tone]}`}
+                  className={`inline-flex size-9 items-center justify-center rounded-full ${
+                    invert
+                      ? "bg-white/15 text-white"
+                      : "bg-primary/10 text-primary"
+                  }`}
                 >
-                  {item.status}
+                  <Icon icon={icon} size={18} strokeWidth={1.75} />
                 </span>
-              </li>
-            ))}
-          </ul>
+                <h3
+                  className={`mt-4 text-[15px] font-semibold tracking-tight ${
+                    invert ? "text-white" : "text-brand-ink"
+                  }`}
+                >
+                  {title}
+                </h3>
+                <p
+                  className={`mt-1.5 text-[13.5px] leading-relaxed ${
+                    invert ? "text-white/70" : "text-brand-ink/65"
+                  }`}
+                >
+                  {body}
+                </p>
+              </motion.article>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

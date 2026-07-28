@@ -1,133 +1,99 @@
-import { Tick02Icon } from "@hugeicons/core-free-icons";
+"use client";
+
+import {
+  Clock01Icon,
+  CookingPotIcon,
+  DeliveryTruck01Icon,
+  FlashIcon,
+} from "@hugeicons/core-free-icons";
+import { motion, useReducedMotion } from "motion/react";
 import { Icon } from "@/components/ui/icon";
-import { Badge } from "@/components/ui/badge";
+import { Appear, Reveal } from "@/components/landing/reveal";
 import { SectionAtmosphere } from "@/components/landing/section-atmosphere";
+import {
+  ScrollRevealWords,
+  useCopyScrollProgress,
+} from "@/components/landing/scroll-reveal-words";
 
-const orders = [
-  {
-    customer: "Maria Santos",
-    id: "#ORD-1042",
-    items: "2 items",
-    status: "Preparing",
-    tone: "amber",
-    time: "2m ago",
-  },
-  {
-    customer: "James Lee",
-    id: "#ORD-1041",
-    items: "4 items",
-    status: "On the way",
-    tone: "sky",
-    time: "8m ago",
-  },
-  {
-    customer: "Ana Cruz",
-    id: "#ORD-1040",
-    items: "1 item",
-    status: "Ready",
-    tone: "emerald",
-    time: "12m ago",
-  },
-  {
-    customer: "Ken Park",
-    id: "#ORD-1039",
-    items: "3 items",
-    status: "Preparing",
-    tone: "amber",
-    time: "14m ago",
-  },
-];
+const HEADLINE = "Keep every order under control";
+const LEAD = "From kitchen to customer.";
+const BODY =
+  "Never lose track of an order again. Dart gives your team complete visibility with live order tracking, preparation times, customer details, and delivery status, all from one dashboard.";
 
-const statusClass = {
-  amber: "bg-amber-50 text-amber-700 ring-amber-200",
-  sky: "bg-sky-50 text-sky-700 ring-sky-200",
-  emerald: "bg-emerald-50 text-emerald-700 ring-emerald-200",
-};
-
-const bullets = [
-  "View active orders in real time",
-  "Track preparation times",
-  "Monitor order status",
-  "Keep your kitchen running smoothly",
+const capabilities = [
+  { label: "View active orders", icon: FlashIcon },
+  { label: "Track prep times", icon: Clock01Icon },
+  { label: "Monitor status", icon: DeliveryTruck01Icon },
+  { label: "Keep the kitchen moving", icon: CookingPotIcon },
 ];
 
 export function FeatureOrders() {
+  const reduce = useReducedMotion();
+  const { ref: copyRef, scrollYProgress } = useCopyScrollProgress([
+    "start 0.88",
+    "end 0.5",
+  ]);
+
   return (
     <section
       id="how-it-works"
-      className="relative overflow-hidden bg-white py-16 sm:py-20"
+      className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-28"
     >
       <SectionAtmosphere variant="peach-right" />
-      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8">
-        <div className="overflow-hidden rounded-2xl border border-black/6 bg-white shadow-[0_24px_48px_-28px_rgba(15,23,42,0.35)]">
-          <div className="flex items-center justify-between border-b border-black/6 px-4 py-3">
-            <h3 className="text-sm font-bold text-brand-ink">Orders</h3>
-            <span className="text-[11px] font-medium text-muted-foreground">
-              Live · 43 active
+
+      <div
+        ref={copyRef}
+        className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8"
+      >
+        <div className="max-w-2xl">
+          <Appear>
+            <span className="inline-flex items-center gap-2 rounded-full border border-brand-ink/12 bg-white/75 px-3.5 py-1.5 text-[13px] font-semibold tracking-tight text-primary shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] backdrop-blur-sm">
+              <Icon icon={DeliveryTruck01Icon} size={16} strokeWidth={1.75} />
+              Live orders
             </span>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[460px] text-left text-[12px]">
-              <thead className="bg-[#FAFAF8] text-[10.5px] font-semibold tracking-wide text-muted-foreground uppercase">
-                <tr>
-                  <th className="px-4 py-2.5">Customer</th>
-                  <th className="px-3 py-2.5">Order ID</th>
-                  <th className="px-3 py-2.5">Items</th>
-                  <th className="px-3 py-2.5">Status</th>
-                  <th className="px-4 py-2.5">Time</th>
-                </tr>
-              </thead>
-              <tbody>
-                {orders.map((row) => (
-                  <tr key={row.id} className="border-t border-black/5">
-                    <td className="px-4 py-3 font-semibold text-brand-ink">
-                      {row.customer}
-                    </td>
-                    <td className="px-3 py-3 text-muted-foreground">{row.id}</td>
-                    <td className="px-3 py-3 text-muted-foreground">{row.items}</td>
-                    <td className="px-3 py-3">
-                      <span
-                        className={`inline-flex rounded-full px-2 py-0.5 text-[10.5px] font-semibold ring-1 ring-inset ${statusClass[row.tone]}`}
-                      >
-                        {row.status}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3 text-muted-foreground">{row.time}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          </Appear>
+
+          <ScrollRevealWords
+            as="h2"
+            text={HEADLINE}
+            progress={scrollYProgress}
+            range={[0, 0.4]}
+            ghostOpacity={0.16}
+            className="mt-6 text-[2rem] font-medium leading-[1.18] tracking-[-0.035em] text-brand-ink sm:text-4xl sm:leading-[1.14] sm:tracking-[-0.045em] lg:text-[2.75rem]"
+          />
+
+          <p className="mt-3 text-[16px] font-semibold tracking-tight text-brand-ink/80">
+            {LEAD}
+          </p>
+
+          <ScrollRevealWords
+            as="p"
+            text={BODY}
+            progress={scrollYProgress}
+            range={[0.28, 0.85]}
+            ghostOpacity={0.18}
+            className="mt-4 max-w-[48ch] text-[15px] leading-relaxed text-brand-ink/70 sm:text-base"
+          />
         </div>
 
-        <div>
-          <Badge className="rounded-full bg-brand-forest/10 px-2.5 py-1 text-[10px] font-bold tracking-[0.12em] text-brand-forest uppercase hover:bg-brand-forest/10">
-            Real-time Orders
-          </Badge>
-          <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-brand-ink sm:text-4xl">
-            Keep every order under control
-          </h2>
-          <p className="mt-2 text-[16px] font-semibold text-brand-ink/80">
-            From kitchen to customer.
-          </p>
-          <p className="mt-3 max-w-md text-[15px] leading-relaxed text-muted-foreground">
-            Never lose track of an order again. Dart gives your team complete
-            visibility with live order tracking, preparation times, customer
-            details, and delivery status—all from one dashboard.
-          </p>
-          <ul className="mt-6 space-y-3">
-            {bullets.map((item) => (
-              <li
-                key={item}
-                className="flex items-start gap-2.5 text-[14px] text-brand-ink/85"
+        <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
+          {capabilities.map(({ label, icon }, i) => (
+            <Reveal key={label} delay={reduce ? 0 : i * 0.06} y={20}>
+              <motion.div
+                whileHover={reduce ? undefined : { y: -3 }}
+                whileTap={reduce ? undefined : { scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 380, damping: 28 }}
+                className="flex items-center gap-3 rounded-[1.15rem] border border-brand-ink/[0.07] bg-white/80 px-4 py-3.5 shadow-[0_16px_40px_-28px_rgba(40,20,10,0.35)] backdrop-blur-sm"
               >
-                <span className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-brand-forest/15 text-brand-forest">
-                  <Icon icon={Tick02Icon} size={12} strokeWidth={2.5} />
+                <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <Icon icon={icon} size={18} strokeWidth={1.75} />
                 </span>
-                {item}
-              </li>
-            ))}
-          </ul>
+                <span className="text-[14px] font-semibold tracking-tight text-brand-ink">
+                  {label}
+                </span>
+              </motion.div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

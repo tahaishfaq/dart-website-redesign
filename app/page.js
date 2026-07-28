@@ -13,7 +13,6 @@ import { PlatformModules } from "@/components/landing/platform-modules";
 import { WhyDart } from "@/components/landing/why-dart";
 import { FinalCta } from "@/components/landing/final-cta";
 import { SiteFooter } from "@/components/landing/site-footer";
-import { Reveal } from "@/components/landing/reveal";
 
 export default function Home() {
   return (
@@ -21,42 +20,18 @@ export default function Home() {
       <main>
         <Hero />
         <TrustStrip />
-        <Reveal>
-          <AboutDart />
-        </Reveal>
-        <Reveal delay={0.04}>
-          <AtAGlance />
-        </Reveal>
-        <Reveal delay={0.04}>
-          <FeatureOrders />
-        </Reveal>
-        <Reveal delay={0.04}>
-          <FeatureMenu />
-        </Reveal>
-        <Reveal delay={0.04}>
-          <FeatureInventory />
-        </Reveal>
-        <Reveal delay={0.04}>
-          <Analytics />
-        </Reveal>
-        <Reveal delay={0.04}>
-          <FeatureReviews />
-        </Reveal>
-        <Reveal delay={0.04}>
-          <FeaturePayments />
-        </Reveal>
-        <Reveal delay={0.04}>
-          <RestaurantTypes />
-        </Reveal>
-        <Reveal delay={0.04}>
-          <PlatformModules />
-        </Reveal>
-        <Reveal delay={0.04}>
-          <WhyDart />
-        </Reveal>
-        <Reveal delay={0.04}>
-          <FinalCta />
-        </Reveal>
+        <AboutDart />
+        <AtAGlance />
+        <FeatureOrders />
+        <FeatureMenu />
+        <FeatureInventory />
+        <Analytics />
+        <FeatureReviews />
+        <FeaturePayments />
+        <RestaurantTypes />
+        <PlatformModules />
+        <WhyDart />
+        <FinalCta />
       </main>
       <SiteFooter />
     </>

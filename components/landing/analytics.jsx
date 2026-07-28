@@ -1,139 +1,97 @@
-import {
-  Cancel01Icon,
-  StarIcon,
-  Timer01Icon,
-  UserIcon,
-} from "@hugeicons/core-free-icons";
-import { Icon } from "@/components/ui/icon";
-import { SectionAtmosphere } from "@/components/landing/section-atmosphere";
+"use client";
 
-function Spark({ color = "#F97316", up = true }) {
-  const d = up
-    ? "M0 26 C10 24, 18 18, 28 16 S48 20, 58 12 S78 6, 90 10 L110 4"
-    : "M0 8 C14 10, 24 16, 36 18 S58 14, 70 20 S90 28, 110 24";
-  return (
-    <svg viewBox="0 0 110 32" className="mt-2 h-8 w-full" aria-hidden>
-      <path
-        d={d}
-        fill="none"
-        stroke={color}
-        strokeWidth="2.2"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
+import { AnalyticsUpIcon } from "@hugeicons/core-free-icons";
+import { useReducedMotion } from "motion/react";
+import { Icon } from "@/components/ui/icon";
+import { Appear, Reveal } from "@/components/landing/reveal";
+import { SectionAtmosphere } from "@/components/landing/section-atmosphere";
+import {
+  ScrollRevealWords,
+  useCopyScrollProgress,
+} from "@/components/landing/scroll-reveal-words";
+
+const HEADLINE = "Understand what drives your revenue";
+const LEAD = "Data that helps you grow.";
+const BODY =
+  "Powerful insights should not require complicated reports. Track the numbers that matter and make better decisions with confidence.";
 
 const metrics = [
-  {
-    label: "Today’s revenue",
-    value: "₱23,090.00",
-    meta: "+42% vs last week",
-    metaClass: "text-emerald-600",
-    body: <Spark color="#F97316" />,
-  },
-  {
-    label: "Live orders",
-    value: "43",
-    meta: "Daily orders tracked",
-    metaClass: "text-muted-foreground",
-    body: (
-      <div className="mt-3 flex items-center gap-2 text-primary">
-        <Icon icon={UserIcon} size={16} />
-        <span className="text-[11px] font-medium text-muted-foreground">
-          Peak lunch service
-        </span>
-      </div>
-    ),
-  },
-  {
-    label: "Preparation time",
-    value: "20 min",
-    meta: "Active menu items live",
-    metaClass: "text-muted-foreground",
-    body: (
-      <div className="mt-3 flex items-center gap-2 text-primary">
-        <Icon icon={Timer01Icon} size={16} />
-        <span className="text-[11px] font-medium text-muted-foreground">
-          On track
-        </span>
-      </div>
-    ),
-  },
-  {
-    label: "Cancellation rate",
-    value: "0.0%",
-    meta: "No cancels today",
-    metaClass: "text-emerald-600",
-    body: (
-      <div className="mt-3 flex items-center gap-2 text-rose-500">
-        <Icon icon={Cancel01Icon} size={16} />
-        <span className="text-[11px] font-medium text-muted-foreground">
-          Clean service day
-        </span>
-      </div>
-    ),
-  },
-  {
-    label: "Customer ratings",
-    value: "4.0",
-    meta: "Weekly revenue in view",
-    metaClass: "text-muted-foreground",
-    body: (
-      <div className="mt-3 flex items-center gap-1 text-amber-400">
-        {Array.from({ length: 4 }).map((_, i) => (
-          <Icon key={i} icon={StarIcon} size={14} />
-        ))}
-        <Icon icon={StarIcon} size={14} className="opacity-40" />
-      </div>
-    ),
-  },
+  { label: "Revenue trends", hint: "See how earnings move week to week" },
+  { label: "Order performance", hint: "Spot peaks, slowdowns, and bottlenecks" },
+  { label: "Customer ratings", hint: "Watch satisfaction in real time" },
+  { label: "Weekly sales", hint: "Compare this week against the last" },
+  { label: "Best-selling items", hint: "Double down on what guests love" },
+  { label: "Restaurant performance", hint: "Compare branches and locations" },
 ];
 
 export function Analytics() {
+  const reduce = useReducedMotion();
+  const { ref: copyRef, scrollYProgress } = useCopyScrollProgress([
+    "start 0.88",
+    "end 0.5",
+  ]);
+
   return (
-    <section className="relative overflow-hidden bg-white py-16 sm:py-20">
+    <section
+      id="analytics"
+      className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-28"
+    >
       <SectionAtmosphere variant="dual" />
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight text-brand-ink sm:text-4xl">
-            Understand what drives your revenue.{" "}
-            <span className="text-primary">Data that helps you grow.</span>
-          </h2>
-          <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
-            Powerful insights shouldn’t require complicated reports. Track
-            revenue trends, order performance, customer ratings, weekly sales,
-            best-selling items, and restaurant performance.
+
+      <div
+        ref={copyRef}
+        className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8"
+      >
+        <div className="max-w-2xl">
+          <Appear>
+            <span className="inline-flex items-center gap-2 rounded-full border border-brand-ink/12 bg-white/75 px-3.5 py-1.5 text-[13px] font-semibold tracking-tight text-primary shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] backdrop-blur-sm">
+              <Icon icon={AnalyticsUpIcon} size={16} strokeWidth={1.75} />
+              Live insights
+            </span>
+          </Appear>
+
+          <ScrollRevealWords
+            as="h2"
+            text={HEADLINE}
+            progress={scrollYProgress}
+            range={[0, 0.4]}
+            ghostOpacity={0.16}
+            className="mt-6 text-[2rem] font-medium leading-[1.18] tracking-[-0.035em] text-brand-ink sm:text-4xl sm:leading-[1.14] sm:tracking-[-0.045em] lg:text-[2.75rem]"
+          />
+          <p className="mt-3 text-[16px] font-semibold tracking-tight text-brand-ink/80">
+            {LEAD}
           </p>
-          <p className="mt-3 text-[15px] font-medium text-brand-ink/75">
-            See what’s working. Spot opportunities faster. Make better business
-            decisions.
-          </p>
+          <ScrollRevealWords
+            as="p"
+            text={BODY}
+            progress={scrollYProgress}
+            range={[0.28, 0.8]}
+            ghostOpacity={0.18}
+            className="mt-4 max-w-[48ch] text-[15px] leading-relaxed text-brand-ink/70 sm:text-base"
+          />
         </div>
 
-        <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-          {metrics.map((m) => (
-            <article
-              key={m.label}
-              className="rounded-2xl border border-black/6 bg-white p-4 shadow-[0_10px_28px_-20px_rgba(15,23,42,0.4)]"
-            >
-              <p className="text-[11px] font-medium text-muted-foreground">
-                {m.label}
-              </p>
-              <p className="mt-1.5 text-xl font-extrabold tracking-tight text-brand-ink">
-                {m.value}
-              </p>
-              <p className={`mt-1 text-[11px] font-medium ${m.metaClass}`}>
-                {m.meta}
-              </p>
-              {m.body}
-            </article>
+        <div className="mt-12 max-w-3xl divide-y divide-brand-ink/8 border-t border-brand-ink/8">
+          {metrics.map(({ label, hint }, i) => (
+            <Reveal key={label} delay={reduce ? 0 : i * 0.05} y={16}>
+              <div className="flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">
+                <h3 className="text-[1.15rem] font-semibold tracking-tight text-brand-ink sm:text-[1.25rem]">
+                  {label}
+                </h3>
+                <p className="max-w-[32ch] text-[14px] leading-relaxed text-brand-ink/55 sm:text-right">
+                  {hint}
+                </p>
+              </div>
+            </Reveal>
           ))}
         </div>
 
-        <p className="mt-8 text-center text-[14px] text-muted-foreground">
-          No spreadsheets. No guesswork. Just the numbers that matter.
-        </p>
+        <Reveal delay={0.2}>
+          <p className="mt-10 max-w-xl text-[15px] font-medium leading-relaxed text-brand-ink/80">
+            See what is working. Spot opportunities faster. Make better business
+            decisions.
+          </p>
+        </Reveal>
       </div>
     </section>
   );
