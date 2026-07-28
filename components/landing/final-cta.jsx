@@ -4,14 +4,14 @@ import { Calendar03Icon } from "@hugeicons/core-free-icons";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { Appear } from "@/components/landing/reveal";
-import { StartSellingCta } from "@/components/landing/start-selling-cta";
 import { SectionAtmosphere } from "@/components/landing/section-atmosphere";
+import { StartSellingCta } from "@/components/landing/start-selling-cta";
 
 export function FinalCta() {
   return (
     <section
       id="pricing"
-      className="relative overflow-hidden bg-white pb-16 sm:pb-20 lg:pb-28"
+      className="relative overflow-x-clip overflow-y-visible bg-transparent pb-4 sm:pb-6 lg:pb-8"
     >
       <SectionAtmosphere variant="peach-br" />
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -41,7 +41,7 @@ export function FinalCta() {
               <span className="hidden text-sm text-white/45 sm:inline">or</span>
               <Button
                 variant="outline"
-                className="h-11 justify-center gap-2.5 rounded-xl border-white/30 bg-transparent px-5 text-center text-[14px] font-semibold text-white shadow-none transition-transform active:scale-[0.98] has-data-[icon=inline-start]:pl-5 hover:bg-white/10 hover:text-white"
+                className="h-11 justify-center gap-2.5 rounded-full border-white/30 bg-transparent px-5 text-center text-[14px] font-semibold text-white shadow-none transition-transform active:scale-[0.98] has-data-[icon=inline-start]:pl-5 hover:bg-white/10 hover:text-white"
               >
                 <span data-icon="inline-start" className="inline-flex">
                   <Icon icon={Calendar03Icon} size={20} strokeWidth={1.75} />

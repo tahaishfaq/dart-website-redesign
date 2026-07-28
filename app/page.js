@@ -17,7 +17,7 @@ import { SiteFooter } from "@/components/landing/site-footer";
 export default function Home() {
   return (
     <>
-      <main>
+      <main className="relative overflow-x-clip overflow-y-visible bg-white">
         <Hero />
         <TrustStrip />
         <AboutDart />

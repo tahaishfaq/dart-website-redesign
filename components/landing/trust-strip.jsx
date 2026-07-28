@@ -19,7 +19,7 @@ const trust = [
 
 export function TrustStrip() {
   return (
-    <section className="relative overflow-hidden border-b border-black/5 bg-white">
+    <section className="relative overflow-x-clip overflow-y-visible bg-transparent">
       <SectionAtmosphere variant="peach-top" />
       <div className="relative mx-auto max-w-6xl px-4 py-7 sm:px-6 sm:py-8 lg:px-8">
         <Reveal>

@@ -83,7 +83,7 @@ export function PlatformModules() {
   return (
     <section
       id="platform"
-      className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-28"
+      className="relative overflow-x-clip overflow-y-visible bg-transparent py-16 sm:py-20 lg:py-28"
     >
       <SectionAtmosphere variant="forest-left" />
 

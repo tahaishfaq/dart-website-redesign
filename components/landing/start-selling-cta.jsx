@@ -9,7 +9,7 @@ const variants = {
   default:
     "h-11 rounded-full px-5 text-[14px] shadow-[0_12px_28px_-12px_rgba(255,100,0,0.7)]",
   nav: "h-10 rounded-full px-5 text-[13px] shadow-[0_8px_20px_-10px_rgba(255,100,0,0.65)]",
-  block: "h-11 w-full rounded-xl px-5 text-[14px] shadow-none sm:w-auto",
+  block: "h-11 w-full rounded-full px-5 text-[14px] shadow-none sm:w-auto",
   full: "h-10 w-full rounded-full px-5 text-[13px] shadow-none",
 };
 

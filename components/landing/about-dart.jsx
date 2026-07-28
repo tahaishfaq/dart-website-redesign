@@ -12,11 +12,11 @@ import {
 import { motion, useReducedMotion } from "motion/react";
 import { Icon } from "@/components/ui/icon";
 import { Appear } from "@/components/landing/reveal";
+import { SectionAtmosphere } from "@/components/landing/section-atmosphere";
 import {
   ScrollRevealWords,
   useCopyScrollProgress,
 } from "@/components/landing/scroll-reveal-words";
-import { SectionAtmosphere } from "@/components/landing/section-atmosphere";
 
 const ease = [0.16, 1, 0.3, 1];
 
@@ -75,7 +75,7 @@ export function AboutDart() {
   return (
     <section
       id="features"
-      className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-28"
+      className="relative overflow-x-clip overflow-y-visible bg-transparent py-16 sm:py-20 lg:py-28"
     >
       <SectionAtmosphere variant="peach-tr" />
 

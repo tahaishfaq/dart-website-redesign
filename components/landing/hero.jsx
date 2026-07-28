@@ -48,7 +48,7 @@ export function Hero() {
     <section
       id="hero"
       ref={sectionRef}
-      className="relative flex min-h-[100dvh] flex-col overflow-hidden"
+      className="relative isolate flex min-h-[100dvh] flex-col overflow-hidden"
     >
       {/* Soft peach / blush gradient - Flexfolio-inspired, Dart-tinted */}
       <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
